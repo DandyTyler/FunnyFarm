@@ -5,10 +5,13 @@ package com.akos.plants;
  */
 public class PlantsFactory {
     public static Plant create(String plantName) {
-        if (plantName.equals("Potato"))
-            return new Potato();
-        if (plantName.equals("Carrot"))
-            return new Carrot();
-        else throw new IllegalArgumentException(plantName);
+        try {
+
+            Class<Plant> cls = (Class<Plant>) Class.forName("com.akos.plants." + plantName);
+            return cls.newInstance();
+        } catch (InstantiationException | IllegalAccessException | ClassNotFoundException | ClassCastException e) {
+            throw new IllegalArgumentException("No such plant: " + plantName, e);
+        }
+
     }
 }
