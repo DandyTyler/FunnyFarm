@@ -1,5 +1,10 @@
 package com.akos.plants;
 
+import com.akos.Conditions;
+
+/**
+ * Растение. Может расти и становиться готовым к сборке
+ */
 public interface Plant {
     String getName();
 
@@ -14,4 +19,6 @@ public interface Plant {
      * Растение растет
      */
     void grow();
+
+    void setConditions(Conditions conditions);
 }

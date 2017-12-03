@@ -12,6 +12,11 @@ import java.util.List;
 public class Garden {
 
     private List<Plant> plants = new LinkedList<>();
+    private Conditions conditions;
+
+    public Garden(Conditions conditions) {
+        this.conditions = conditions;
+    }
 
     /**
      * Посадить растение в огород
@@ -19,6 +24,7 @@ public class Garden {
      * @param p растение
      */
     public void plant(Plant p) {
+        p.setConditions(conditions);
         plants.add(p);
     }
 

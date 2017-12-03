@@ -6,6 +6,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Хранилище. Можно помещать сюда собранный урожай или забирать его из хранилища. Для хранения данных
+ * о урожае спользует мапу, т.к после сборки важно только количество урожая того или иного растения
+ */
 public class Storage {
     private Map<String, Integer> storage = new HashMap<>();
 
