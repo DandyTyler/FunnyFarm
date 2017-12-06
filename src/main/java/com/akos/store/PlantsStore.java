@@ -4,9 +4,9 @@ import com.akos.exceptions.NoSuchMoneyException;
 import com.akos.plants.Plant;
 import com.akos.plants.factories.PlantFactory;
 
-import java.util.HashMap;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
-import java.util.stream.IntStream;
 
 /**
  * Магазин растений. Принимает заказы, и счет, с которогого списываются бонусы, возвращает корзину купленных растений
@@ -15,30 +15,35 @@ public class PlantsStore {
 
     public static Cart buy(Order order, Account account) {
         Cart cart = new Cart();
+        int cartCost = 0;
+        List<Plant> plants = new ArrayList<>();
         for (Map.Entry<String, Integer> entry : order.getPlants().entrySet()) {
             for (int i = 0; i < entry.getValue(); i++) {
-                cart.add(create(entry.getKey(), account));
+                String plantName = entry.getKey();
+
+                PlantFactory plantFactory = getPlantFactory(plantName);
+                cartCost += plantFactory.getCost();
+
+                Plant plant = plantFactory.getPlant();
+                plants.add(plant);
             }
         }
+        if (!account.check(cartCost)) {
+            throw new NoSuchMoneyException("You have: " + account.getBonuses() + "; You need: " + cartCost);
+        }
+        cart.getPlantsList().addAll(plants);
+        account.addBonuses(-cartCost);
         return cart;
     }
 
-
-    private static Plant create(String plantName, Account account) {
+    private static PlantFactory getPlantFactory(String plantName) {
         try {
-            Map<String, PlantFactory> factoryMap = new HashMap<>();
-            if (!factoryMap.containsKey(plantName)) {
-                Class<PlantFactory> cls = (Class<PlantFactory>) Class.forName("com.akos.plants.factories." + plantName + "Factory");
-                factoryMap.put(plantName, cls.newInstance());
-            }
-            if (account.check(factoryMap.get(plantName).getCost())) {
-                account.addBonuses(-factoryMap.get(plantName).getCost());
-                return factoryMap.get(plantName).getPlant();
-            }
-            throw new NoSuchMoneyException("You have: " + account.getBonuses() + "; You need: " + factoryMap.get(plantName).getCost());
+            Class<PlantFactory> cls = (Class<PlantFactory>) Class.forName("com.akos.plants.factories." + plantName + "Factory");
+            return cls.newInstance();
         } catch (InstantiationException | IllegalAccessException | ClassNotFoundException | ClassCastException e) {
             throw new IllegalArgumentException("No such plant: " + plantName, e);
         }
 
     }
+
 }
