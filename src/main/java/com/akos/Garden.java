@@ -12,9 +12,14 @@ import java.util.List;
 public class Garden {
 
     private List<Plant> plants = new LinkedList<>();
+
     private Conditions conditions;
 
     public Garden(Conditions conditions) {
+        this.conditions = conditions;
+    }
+
+    public void setConditions(Conditions conditions) {
         this.conditions = conditions;
     }
 

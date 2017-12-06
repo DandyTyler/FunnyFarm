@@ -27,6 +27,9 @@ public class Farm {
         ;
     }
 
+    public void setGardenContions(Conditions conditions){
+        garden.setConditions(conditions);
+    }
     /**
      * Собираем урожай и помещаем его на склад
      */

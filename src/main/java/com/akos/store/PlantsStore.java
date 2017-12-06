@@ -12,7 +12,6 @@ import java.util.stream.IntStream;
  * Магазин растений. Принимает заказы, и счет, с которогого списываются бонусы, возвращает корзину купленных растений
  */
 public class PlantsStore {
-    Map<String, PlantFactory> factoryMap = new HashMap<>();
 
     public static Cart buy(Order order, Account account) {
         Cart cart = new Cart();
