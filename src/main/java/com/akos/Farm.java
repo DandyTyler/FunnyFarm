@@ -6,6 +6,8 @@ import com.akos.store.Account;
 import com.akos.store.Cart;
 import com.akos.store.Order;
 import com.akos.store.PlantsStore;
+import com.akos.ui.Command;
+import com.akos.ui.CommandArgument;
 
 /**
  * Ферма. Содержит огород и склад для урожая, имеет некоторое количество бонусов. Можно собирать урожай и помещать его не склад, продавать урожа со склада,
@@ -27,9 +29,10 @@ public class Farm {
         ;
     }
 
-    public void setGardenContions(Conditions conditions){
+    public void setGardenContions(Conditions conditions) {
         garden.setConditions(conditions);
     }
+
     /**
      * Собираем урожай и помещаем его на склад
      */
@@ -40,6 +43,10 @@ public class Farm {
     /**
      * Продаем со склада урожай конкретного растения, по определенной цене за еденицу и получаем за это бонусы
      */
+    @Command({
+            @CommandArgument("Enter plantName: "),
+            @CommandArgument("Enter price: ")
+    })
     public void sellHarvest(String plantName, int price) {
         account.addBonuses(storage.removeFromStorage(plantName) * price);
     }
