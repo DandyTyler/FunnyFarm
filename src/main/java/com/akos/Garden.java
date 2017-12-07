@@ -1,6 +1,7 @@
 package com.akos;
 
 import com.akos.plants.Plant;
+import com.sun.org.apache.xpath.internal.SourceTree;
 
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -58,6 +59,12 @@ public class Garden {
     private void doGrow() {
         for (Plant p : plants) {
             p.grow();
+        }
+    }
+    public void printPlants(){
+        System.out.println("Garden: ");
+        for (Plant p:plants) {
+            System.out.println(p);
         }
     }
 

@@ -21,4 +21,5 @@ public interface Plant {
     void grow();
 
     void setConditions(Conditions conditions);
+
 }

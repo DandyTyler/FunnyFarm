@@ -63,32 +63,4 @@ public class FarmTest {
         farm.doHarvest();
     }
 
-    // sellHarvest("Carot", 2)
-    // buyPlant("Carot", 2)
-    // doHarvest() // no arguments
-    // print()
-    // exit()
-    //
-    // exceptions handing
-    public void testUi() throws InvocationTargetException, IllegalAccessException {
-        Map<String, Method> availableMethdos = new HashMap<>(); // name -> method
-
-        System.out.println("Enter command: ");
-        String commandName = ""; /// read from terminal
-
-        Method method = availableMethdos.get(commandName);
-
-        List<Object> argumentValues = new ArrayList<>();
-
-        Command cmd = method.getAnnotation(Command.class);
-        for (CommandArgument argument : cmd.value()) {
-            System.out.println(argument.value());
-            String argumentValue = ""; /// read from terminal
-            argumentValues.add(argumentValue); // convert type according to method signature
-        }
-
-        Object result = method.invoke(farm, argumentValues.toArray());
-
-    }
-
 }

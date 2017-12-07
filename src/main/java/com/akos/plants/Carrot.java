@@ -30,6 +30,7 @@ public class Carrot extends Vegetable {
         if (conditions.getTemperature() < 21)
             throw new IllegalConditionException("Temperature too low: " + conditions.getTemperature());
         size++;
+        vitaminB+=5;
     }
 
     @Override

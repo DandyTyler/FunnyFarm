@@ -31,6 +31,7 @@ public class Potato extends Vegetable {
         if (conditions.getSeason() == Seasons.WINTER)
             throw new IllegalConditionException("This plant can't grow in this season: " + conditions.getSeason());
         age++;
+        vitaminB+=2;
     }
 
     @Override

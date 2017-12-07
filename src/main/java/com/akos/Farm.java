@@ -36,6 +36,7 @@ public class Farm {
     /**
      * Собираем урожай и помещаем его на склад
      */
+    @Command({})
     public void doHarvest() {
         storage.sendToStorage(garden.harvest());
     }
@@ -63,8 +64,22 @@ public class Farm {
         }
     }
 
+    @Command({
+            @CommandArgument("Enter plantName: "),
+            @CommandArgument("Enter quantity: ")
+    })
+    public void buyAndPlant(String plantName, int quantity) {
+     buyAndPlant(new Order().add(plantName,quantity));
+    }
+
+    @Command({})
     public int getBonuses() {
         return account.getBonuses();
+    }
+
+    @Command({})
+    public void print(){
+        garden.printPlants();
     }
 
     /**

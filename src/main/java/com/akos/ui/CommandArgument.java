@@ -1,9 +1,10 @@
 package com.akos.ui;
 
-/**
- * @author VYZH
- * @since 06.12.2017
- */
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
+
+@Retention(RetentionPolicy.RUNTIME)
 public @interface CommandArgument {
     String value();
 }
