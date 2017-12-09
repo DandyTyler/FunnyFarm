@@ -1,3 +1,6 @@
 com.akos
 com.akos.exceptions
 com.akos.plants
+com.akos.plants.factories
+com.akos.store
+com.akos.ui
