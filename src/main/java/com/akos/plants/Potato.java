@@ -5,13 +5,14 @@ import com.akos.Seasons;
 import com.akos.exceptions.IllegalConditionException;
 
 /**
- * Картофель. Становится готовым к сборке урожая, когда возраст достигает 5.
+ * Картофель. Становится готовым к сборке урожая, когда возраст достигает 2.
  */
 public class Potato extends Vegetable {
+
     private String name = "Potato";
     private int age = 0;
     private Conditions conditions;
-    private int vitaminB = 70;
+    private int vitaminB = 71;
 
     @Override
     public String getName() {
@@ -20,7 +21,7 @@ public class Potato extends Vegetable {
 
     @Override
     public boolean isReady() {
-        return age > 0;
+        return age > 2;
     }
 
     /**
@@ -29,9 +30,9 @@ public class Potato extends Vegetable {
     @Override
     public void grow() {
         if (conditions.getSeason() == Seasons.WINTER)
-            throw new IllegalConditionException("This plant can't grow in this season: " + conditions.getSeason());
+            throw new IllegalConditionException("Potato can't grow in this season: " + conditions.getSeason());
         age++;
-        vitaminB+=2;
+        vitaminB+=5;
     }
 
     @Override

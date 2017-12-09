@@ -15,7 +15,7 @@ public class Order {
      *
      * @param name   название растения
      * @param amount количество
-     * @return
+     * @return этот же заказ
      */
     public Order add(String name, int amount) {
         Integer i = plants.get(name);

@@ -11,6 +11,7 @@ import java.util.Map;
  * о урожае спользует мапу, т.к после сборки важно только количество урожая того или иного растения
  */
 public class Storage {
+
     private Map<String, Integer> storage = new HashMap<>();
 
     /**

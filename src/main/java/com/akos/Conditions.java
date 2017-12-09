@@ -3,7 +3,9 @@ package com.akos;
 /**
  * Условия, в которых растут растения
  */
+
 public class Conditions {
+
     private Seasons season;
     private int humidity;
     private int temperature;

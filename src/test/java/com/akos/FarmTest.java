@@ -25,7 +25,7 @@ public class FarmTest {
     @Before
     public void setUp() {
         this.farm = new Farm(20);
-        farm.setGardenContions(new Conditions(65, 27, 400, Seasons.SUMMER));
+        farm.setGardenConditions(new Conditions(65, 27, 400, Seasons.SUMMER));
     }
 
     @Test
@@ -44,6 +44,10 @@ public class FarmTest {
         farm.buyAndPlant(new Order().add("Potato", 2).add("Carrot", 4));
         farm.doHarvest();
         farm.doHarvest();
+        farm.doHarvest();
+        farm.doHarvest();
+        farm.doHarvest();
+        farm.doHarvest();
         farm.sellHarvest("Potato", 10);
         farm.sellHarvest("Carrot", 5);
         assertThat(farm.getBonuses(), is(42));
@@ -51,14 +55,14 @@ public class FarmTest {
 
     @Test(expected = IllegalConditionException.class)
     public void test_wrong_season() {
-        farm.setGardenContions(new Conditions(65, 27, 400, Seasons.WINTER));
+        farm.setGardenConditions(new Conditions(65, 27, 400, Seasons.WINTER));
         farm.buyAndPlant(new Order().add("Potato", 1));
         farm.doHarvest();
     }
 
     @Test(expected = IllegalConditionException.class)
     public void test_wrong_temperature() {
-        farm.setGardenContions(new Conditions(65, 10, 400, Seasons.SUMMER));
+        farm.setGardenConditions(new Conditions(65, 10, 400, Seasons.SUMMER));
         farm.buyAndPlant(new Order().add("Carrot", 1));
         farm.doHarvest();
     }

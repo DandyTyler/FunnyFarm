@@ -1,11 +1,11 @@
 package com.akos.plants.factories;
 
-import com.akos.plants.Carrot;
+import com.akos.plants.Apple;
 import com.akos.plants.Plant;
 
-public class CarrotFactory implements PlantFactory {
+public class AppleFactory implements PlantFactory {
 
-    private int cost = 2;
+    private int cost = 15;
 
     @Override
     public int getCost() {
@@ -14,6 +14,6 @@ public class CarrotFactory implements PlantFactory {
 
     @Override
     public Plant getPlant() {
-        return new Carrot();
+        return new Apple();
     }
 }

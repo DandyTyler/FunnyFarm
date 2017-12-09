@@ -61,6 +61,10 @@ public class Garden {
             p.grow();
         }
     }
+
+    /**
+     * Распечатывает состояние растений в огороде
+     */
     public void printPlants(){
         System.out.println("Garden: ");
         for (Plant p:plants) {

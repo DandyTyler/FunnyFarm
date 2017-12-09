@@ -14,10 +14,10 @@ import com.akos.ui.CommandArgument;
  * получая бонусы, тратить бонусы на окупку новых растений
  */
 public class Farm {
-    private Storage storage = new Storage();
-    private Garden garden = new Garden(new Conditions(65, 20, 400, Seasons.SUMMER));
-    private Account account = new Account();
 
+    private Storage storage = new Storage();
+    private Garden garden = new Garden(new Conditions(65, 27, 400, Seasons.SUMMER));
+    private Account account = new Account();
 
     /**
      * При создании фермы можно определить начальное количество бонусов
@@ -29,7 +29,12 @@ public class Farm {
         ;
     }
 
-    public void setGardenContions(Conditions conditions) {
+    /**
+     * Устанавливает условия в огороде
+     *
+     * @param conditions условия
+     */
+    public void setGardenConditions(Conditions conditions) {
         garden.setConditions(conditions);
     }
 
@@ -69,7 +74,7 @@ public class Farm {
             @CommandArgument("Enter quantity: ")
     })
     public void buyAndPlant(String plantName, int quantity) {
-     buyAndPlant(new Order().add(plantName,quantity));
+        buyAndPlant(new Order().add(plantName, quantity));
     }
 
     @Command({})
@@ -77,19 +82,12 @@ public class Farm {
         return account.getBonuses();
     }
 
+    /**
+     * Распечатывает состояние растений в огороде
+     */
     @Command({})
-    public void print(){
+    public void print() {
         garden.printPlants();
     }
 
-    /**
-     * Рассчитывает затраты на покупку растений
-     *
-     * @param cost     цена за единицу
-     * @param quantity
-     * @return убыток
-     */
-    private int calcLoss(int cost, int quantity) {
-        return cost * quantity;
-    }
 }

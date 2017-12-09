@@ -7,6 +7,7 @@ import com.akos.exceptions.IllegalConditionException;
  * Морковь. Готова к сборке если размер больше 3
  */
 public class Carrot extends Vegetable {
+
     private String name = "Carrot";
     private int size = 0;
     private Conditions conditions;
@@ -19,7 +20,7 @@ public class Carrot extends Vegetable {
 
     @Override
     public boolean isReady() {
-        return size > 0;
+        return size > 3;
     }
 
     /**
@@ -28,9 +29,9 @@ public class Carrot extends Vegetable {
     @Override
     public void grow() {
         if (conditions.getTemperature() < 21)
-            throw new IllegalConditionException("Temperature too low: " + conditions.getTemperature());
+            throw new IllegalConditionException("Temperature is too low for carrot: " + conditions.getTemperature());
         size++;
-        vitaminB+=5;
+        vitaminB+=11;
     }
 
     @Override

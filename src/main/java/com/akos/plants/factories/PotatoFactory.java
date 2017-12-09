@@ -5,7 +5,9 @@ import com.akos.plants.Potato;
 import com.akos.store.Account;
 
 public class PotatoFactory implements PlantFactory {
+
     private int cost = 5;
+
     @Override
     public int getCost() {
         return cost;
