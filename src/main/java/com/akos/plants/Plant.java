@@ -23,6 +23,12 @@ public interface Plant {
     boolean isReady();
 
     /**
+     * Растение может быть полезным
+     * @return полезно или нет
+     */
+    boolean IsHealthy();
+
+    /**
      * Растение растет
      */
     void grow();
